@@ -1,0 +1,138 @@
+{
+  "1. Productos": {
+    "id": "string",
+    "name": "string",
+    "description": "string",
+    "price": "number",
+    "category": "string (referencia a Categorías)",
+    "animalType": "string",
+    "brand": "string",
+    "stock": "number",
+    "images": ["string (URLs)"],
+    "specifications": {
+      "weight": "string",
+      "dimensions": "string",
+      "material": "string"
+    },
+    "tags": ["string"],
+    "averageRating": "number",
+    "createdAt": "date",
+    "updatedAt": "date"
+  },
+
+  "2. Categorías": {
+    "id": "string",
+    "name": "string",
+    "description": "string",
+    "parentCategory": "string (referencia a Categorías, opcional)",
+    "imageUrl": "string",
+    "active": "boolean"
+  },
+
+  "3. Usuarios": {
+    "id": "string",
+    "username": "string",
+    "email": "string",
+    "password": "string (hashed)",
+    "firstName": "string",
+    "lastName": "string",
+    "phoneNumber": "string",
+    "addresses": [{
+      "id": "string",
+      "street": "string",
+      "city": "string",
+      "state": "string",
+      "country": "string",
+      "zipCode": "string",
+      "isDefault": "boolean"
+    }],
+    "role": "string (e.g., 'customer', 'admin')",
+    "createdAt": "date",
+    "lastLogin": "date"
+  },
+
+  "4. Carrito de Compras": {
+    "id": "string",
+    "userId": "string (referencia a Usuarios)",
+    "items": [{
+      "productId": "string (referencia a Productos)",
+      "quantity": "number",
+      "price": "number"
+    }],
+    "totalAmount": "number",
+    "createdAt": "date",
+    "updatedAt": "date"
+  },
+
+  "5. Pedidos": {
+    "id": "string",
+    "userId": "string (referencia a Usuarios)",
+    "items": [{
+      "productId": "string (referencia a Productos)",
+      "quantity": "number",
+      "price": "number"
+    }],
+    "totalAmount": "number",
+    "shippingAddress": {
+      "street": "string",
+      "city": "string",
+      "state": "string",
+      "country": "string",
+      "zipCode": "string"
+    },
+    "paymentMethod": "string",
+    "paymentStatus": "string (e.g., 'pending', 'completed')",
+    "orderStatus": "string (e.g., 'processing', 'shipped', 'delivered')",
+    "createdAt": "date",
+    "updatedAt": "date"
+  },
+
+  "6. Reseñas y Valoraciones": {
+    "id": "string",
+    "productId": "string (referencia a Productos)",
+    "userId": "string (referencia a Usuarios)",
+    "rating": "number (1-5)",
+    "title": "string",
+    "comment": "string",
+    "helpful": "number",
+    "createdAt": "date",
+    "updatedAt": "date"
+  },
+
+  "7. Búsqueda": {
+    "query": "string",
+    "filters": {
+      "category": "string",
+      "animalType": "string",
+      "priceRange": {
+        "min": "number",
+        "max": "number"
+      },
+      "brand": "string",
+      "rating": "number"
+    },
+    "sort": {
+      "field": "string (e.g., 'price', 'rating')",
+      "order": "string (e.g., 'asc', 'desc')"
+    },
+    "pagination": {
+      "page": "number",
+      "limit": "number"
+    }
+  },
+
+  "8. Mascotas": {
+    "id": "string",
+    "userId": "string (referencia a Usuarios)",
+    "name": "string",
+    "type": "string (e.g., 'dog', 'cat')",
+    "breed": "string",
+    "age": "number",
+    "weight": "number",
+    "gender": "string",
+    "medicalConditions": ["string"],
+    "dietaryRestrictions": ["string"],
+    "createdAt": "date",
+    "updatedAt": "date"
+  }
+}
