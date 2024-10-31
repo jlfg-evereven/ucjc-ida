@@ -1,0 +1,17 @@
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: service-telemetry
+spec:
+  tracing:
+    - randomSamplingPercentage: 100.0
+  metrics:
+    - providers:
+      - name: prometheus
+    - overrides:
+      - match:
+          metric: REQUEST_COUNT
+        tagOverrides:
+          response_code:
+            operation: UPSERT
+            value: "{{.Response.Code}}"
