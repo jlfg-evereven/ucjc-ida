@@ -1,0 +1,1 @@
+docker run --add-host=host.docker.internal:host-gateway -p 3000:3000 oauth-server
