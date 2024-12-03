@@ -1,0 +1,213 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "petStore": "https://ejemplo-tienda-mascotas.es/",
+    "animalType": "petStore:animalType",
+    "medicalConditions": "petStore:medicalConditions",
+    "dietaryRestrictions": "petStore:dietaryRestrictions"
+  },
+  "@type": "PetStore",
+  "@id": "https://ejemplo-tienda-mascotas.es",
+  
+  "Product": {
+    "@type": "Product",
+    "@id": "petStore:product/{{id}}",
+    "name": "string",
+    "description": "string",
+    "offers": {
+      "@type": "Offer",
+      "price": "number",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "inventoryLevel": "number"
+    },
+    "category": {
+      "@type": "ProductCategory",
+      "@id": "petStore:category/{{categoryId}}"
+    },
+    "animalType": "string",
+    "brand": {
+      "@type": "Brand",
+      "name": "string"
+    },
+    "image": ["string"],
+    "weight": {
+      "@type": "QuantitativeValue",
+      "value": "number",
+      "unitCode": "string"
+    },
+    "height": {
+      "@type": "QuantitativeValue",
+      "value": "number",
+      "unitCode": "string"
+    },
+    "material": "string",
+    "keywords": ["string"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "number",
+      "reviewCount": "number"
+    },
+    "dateCreated": "datetime",
+    "dateModified": "datetime"
+  },
+
+  "ProductCategory": {
+    "@type": "ProductCategory",
+    "@id": "petStore:category/{{id}}",
+    "name": "string",
+    "description": "string",
+    "parentCategory": {
+      "@type": "ProductCategory",
+      "@id": "petStore:category/{{parentId}}"
+    },
+    "image": "string",
+    "active": "boolean"
+  },
+
+  "Person": {
+    "@type": "Person",
+    "@id": "petStore:user/{{id}}",
+    "username": "string",
+    "email": "string",
+    "givenName": "string",
+    "familyName": "string",
+    "telephone": "string",
+    "address": [{
+      "@type": "PostalAddress",
+      "@id": "petStore:address/{{id}}",
+      "streetAddress": "string",
+      "addressLocality": "string",
+      "addressRegion": "string",
+      "addressCountry": "string",
+      "postalCode": "string",
+      "isDefault": "boolean"
+    }],
+    "role": "string",
+    "dateCreated": "datetime",
+    "lastLoginTime": "datetime"
+  },
+
+  "CartItem": {
+    "@type": "ItemList",
+    "@id": "petStore:cart/{{id}}",
+    "owner": {
+      "@type": "Person",
+      "@id": "petStore:user/{{userId}}"
+    },
+    "itemListElement": [{
+      "@type": "ListItem",
+      "item": {
+        "@type": "Product",
+        "@id": "petStore:product/{{productId}}"
+      },
+      "quantity": "number",
+      "price": "number"
+    }],
+    "dateCreated": "datetime",
+    "dateModified": "datetime"
+  },
+
+  "Order": {
+    "@type": "Order",
+    "@id": "petStore:order/{{id}}",
+    "customer": {
+      "@type": "Person",
+      "@id": "petStore:user/{{userId}}"
+    },
+    "orderedItem": [{
+      "@type": "OrderItem",
+      "orderedItem": {
+        "@type": "Product",
+        "@id": "petStore:product/{{productId}}"
+      },
+      "orderQuantity": "number",
+      "price": "number"
+    }],
+    "totalPrice": {
+      "@type": "PriceSpecification",
+      "price": "number",
+      "priceCurrency": "EUR"
+    },
+    "deliveryAddress": {
+      "@type": "PostalAddress",
+      "streetAddress": "string",
+      "addressLocality": "string",
+      "addressRegion": "string",
+      "addressCountry": "string",
+      "postalCode": "string"
+    },
+    "paymentMethod": {
+      "@type": "PaymentMethod",
+      "name": "string"
+    },
+    "paymentStatus": "string",
+    "orderStatus": "string",
+    "orderDate": "datetime",
+    "dateModified": "datetime"
+  },
+
+  "Review": {
+    "@type": "Review",
+    "@id": "petStore:review/{{id}}",
+    "itemReviewed": {
+      "@type": "Product",
+      "@id": "petStore:product/{{productId}}"
+    },
+    "author": {
+      "@type": "Person",
+      "@id": "petStore:user/{{userId}}"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "number",
+      "bestRating": 5,
+      "worstRating": 1
+    },
+    "name": "string",
+    "reviewBody": "string",
+    "positiveNotes": "number",
+    "datePublished": "datetime",
+    "dateModified": "datetime"
+  },
+
+  "SearchAction": {
+    "@type": "SearchAction",
+    "query-input": {
+      "@type": "PropertyValueSpecification",
+      "valueRequired": true,
+      "valueName": "search_term_string"
+    },
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://ejemplo-tienda-mascotas.es/search?q={search_term_string}&category={category}&animalType={animalType}&minPrice={minPrice}&maxPrice={maxPrice}&brand={brand}&rating={rating}&page={page}&limit={limit}"
+    }
+  },
+
+  "Pet": {
+    "@type": "Thing",
+    "@id": "petStore:pet/{{id}}",
+    "owner": {
+      "@type": "Person",
+      "@id": "petStore:user/{{userId}}"
+    },
+    "name": "string",
+    "animalType": "string",
+    "breed": "string",
+    "age": {
+      "@type": "QuantitativeValue",
+      "value": "number",
+      "unitCode": "ANN"
+    },
+    "weight": {
+      "@type": "QuantitativeValue",
+      "value": "number",
+      "unitCode": "KGM"
+    },
+    "gender": "string",
+    "medicalConditions": ["string"],
+    "dietaryRestrictions": ["string"],
+    "dateCreated": "datetime",
+    "dateModified": "datetime"
+  }
+}
