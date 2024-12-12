@@ -15,6 +15,7 @@ spec:
       containers:
       - name: frontend
         image: hello-flask
+        imagePullPolicy: Never
         ports:
         - containerPort: 5000
         resources:
